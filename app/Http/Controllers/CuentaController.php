@@ -15,7 +15,11 @@ class CuentaController extends Controller
      */
     public function index()
     {
-        //
+        $cuentas = Cuenta::all();
+
+        return view('cuentas.index', [
+            'cuentas' => $cuentas,
+        ]);
     }
 
     /**
@@ -25,7 +29,11 @@ class CuentaController extends Controller
      */
     public function create()
     {
-        //
+        $cuenta = new Cuenta();
+
+        return view('cuentas.create', [
+            'cuenta' => $cuenta
+        ]);
     }
 
     /**
@@ -36,7 +44,10 @@ class CuentaController extends Controller
      */
     public function store(StoreCuentaRequest $request)
     {
-        //
+        $validados = $request->validated();
+        $cuenta = new Cuenta($validados);
+        $cuenta->save();
+        return redirect()->route('cuentas.index');
     }
 
     /**
@@ -81,6 +92,9 @@ class CuentaController extends Controller
      */
     public function destroy(Cuenta $cuenta)
     {
-        //
+        $cuenta->clientes()->detach();
+        $cuenta->delete();
+
+        return redirect()->route('cuentas.index')->with('success', 'Cuenta borrada con exito.');
     }
 }

@@ -15,7 +15,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $clientes = cliente::all();
+        $clientes = Cliente::all();
 
         return view('clientes.index', [
             'clientes' => $clientes,
@@ -29,7 +29,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        $cliente = new cliente();
+        $cliente = new Cliente();
 
         return view('clientes.create', [
             'cliente' => $cliente
