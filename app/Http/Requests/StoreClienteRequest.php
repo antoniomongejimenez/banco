@@ -24,7 +24,8 @@ class StoreClienteRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'dni' => 'required|regex:/^[0-9]{8}[A-Z]$/i',
+            'nombre' => 'required|string|max:255',
         ];
     }
 }

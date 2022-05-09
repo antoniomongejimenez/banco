@@ -58,7 +58,9 @@ class ClienteController extends Controller
      */
     public function show(Cliente $cliente)
     {
-        //
+        return view('clientes.show', [
+            'cliente' => $cliente,
+        ]);
     }
 
     /**
@@ -69,7 +71,9 @@ class ClienteController extends Controller
      */
     public function edit(Cliente $cliente)
     {
-        //
+        return view('clientes.edit', [
+            'cliente' => $cliente,
+        ]);
     }
 
     /**
@@ -81,7 +85,12 @@ class ClienteController extends Controller
      */
     public function update(UpdateClienteRequest $request, Cliente $cliente)
     {
-        //
+        $validados = $request->validated();
+        $cliente->dni = $validados['dni'];
+        $cliente->nombre = $validados['nombre'];
+        $cliente->save();
+
+        return redirect()->route('clientes.index')->with('success', 'Cliente modificado');
     }
 
     /**
@@ -92,6 +101,9 @@ class ClienteController extends Controller
      */
     public function destroy(Cliente $cliente)
     {
-        //
+        $cliente->cuentas()->detach();
+        $cliente->delete();
+
+        return redirect()->route('clientes.index')->with('success', 'Cliente borrado con exito.');
     }
 }

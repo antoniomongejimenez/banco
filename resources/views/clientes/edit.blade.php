@@ -1,15 +1,15 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Crear cliente') }}
+            {{ __('Editar cliente') }}
         </h2>
     </x-slot>
 
 <x-clientes>
-    <form action="{{ route('clientes.store', [], false) }}" method="POST"
+    <form action="{{ route('clientes.update', [$cliente], false) }}" method="POST"
           enctype="multipart/form-data">
         @csrf
-        @method('POST')
+        @method('PUT')
         <div class="mb-6">
             <label for="dni"
                 class="text-sm font-medium text-gray-900 block mb-2 @error('dni') text-red-500 @enderror">
@@ -40,6 +40,7 @@
         </div>
         <button type="submit"
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Enviar</button>
+        <a href="/clientes" class="mt-4 text-blue-900 hover:underline">Volver</a>
     </form>
 </x-clientes>
 
