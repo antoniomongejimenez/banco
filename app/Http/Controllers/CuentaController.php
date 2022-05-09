@@ -97,4 +97,15 @@ class CuentaController extends Controller
 
         return redirect()->route('cuentas.index')->with('success', 'Cuenta borrada con exito.');
     }
+
+    public function titulares(Cuenta $cuenta)
+    {
+        $clientes = $cuenta->clientes;
+
+        return view('cuentas.titulares', [
+            'clientes' => $clientes,
+        ]);
+    }
+
+
 }

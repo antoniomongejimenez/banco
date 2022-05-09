@@ -42,7 +42,7 @@
                                             </div>
                                         </td>
                                         <td>
-                                            <a href="{{ route('cuentas.show', $cuenta) }}" class="mt-4 text-blue-900 hover:underline">Mostrar</a>
+                                            <a href="{{ route('vertitulares', $cuenta) }}" class="mt-4 text-blue-900 hover:underline">Mostrar titulares</a>
                                         </td>
                                     </tr>
                                 @endforeach

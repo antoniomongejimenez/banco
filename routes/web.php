@@ -27,6 +27,7 @@ Route::resource('clientes', ClienteController::class);
 
 Route::resource('cuentas', CuentaController::class);
 
-
+Route::get('/cuentas/{cuenta}/titulares', [CuentaController::class, 'titulares'])
+->name('vertitulares');
 
 require __DIR__.'/auth.php';
