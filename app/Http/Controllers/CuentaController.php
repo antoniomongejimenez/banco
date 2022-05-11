@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCuentaRequest;
 use App\Http\Requests\UpdateCuentaRequest;
+use App\Models\Cliente;
 use App\Models\Cuenta;
 
 class CuentaController extends Controller
@@ -106,6 +107,25 @@ class CuentaController extends Controller
             'clientes' => $clientes,
         ]);
     }
+
+    public function verlistadoclientes(Cuenta $cuenta)
+    {
+        $clientes = Cliente::all();
+
+        return view('cuentas.todoslosclientes', [
+            'clientes' => $clientes,
+            'cuenta' => $cuenta,
+        ]);
+    }
+
+    public function meter(Cuenta $cuenta, Cliente $cliente)
+    {
+        return view('cuentas.prueba', [
+            'cliente' => $cliente,
+            'cuenta' => $cuenta,
+        ]);
+    }
+
 
 
 }

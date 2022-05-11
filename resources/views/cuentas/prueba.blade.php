@@ -26,26 +26,7 @@
                                 </th>
                             </thead>
                             <tbody>
-                                @foreach ($cuentas as $cuenta)
-                                    <tr>
-                                        <td class="px-6 py-2">{{ $cuenta->numero }}</td>
-                                        <td>
-                                            <a href="{{ route('verlistadoclientes', $cuenta) }}" class="mt-4 text-blue-900 hover:underline">Meter titulares</a>
-                                        </td>
-                                        <td>
-                                            <div class="text-sm text-gray-900 ">
-                                                <form action="{{ route('cuentas.destroy', $cuenta) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="px-4 py-1 text-sm text-white bg-red-400 rounded">Borrar</button>
-                                                </form>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('vertitulares', $cuenta) }}" class="mt-4 text-blue-900 hover:underline">Mostrar titulares</a>
-                                        </td>
-                                    </tr>
-                                @endforeach
+                                {{dd($cliente)}}
                             </tbody>
                         </table>
                         <a href="/cuentas/create" class="mt-4 text-blue-900 hover:underline">Insertar una nueva cuenta</a>

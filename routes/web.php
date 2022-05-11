@@ -30,4 +30,11 @@ Route::resource('cuentas', CuentaController::class);
 Route::get('/cuentas/{cuenta}/titulares', [CuentaController::class, 'titulares'])
 ->name('vertitulares');
 
+
+Route::get('/cuentas/{cuenta}/verlistadoclientes', [CuentaController::class, 'verlistadoclientes'])
+->name('verlistadoclientes');
+
+Route::post('/cuentas/meter/{cliente}', [CuentaController::class, 'meter'])
+->name('meter');
+
 require __DIR__.'/auth.php';

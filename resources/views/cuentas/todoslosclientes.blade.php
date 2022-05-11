@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Titulares') }}
+            {{ __('Clientes') }}
         </h2>
     </x-slot>
 
@@ -18,19 +18,27 @@
                                 <th class="px-6 py-2 text-gray-500">
                                     Nombre
                                 </th>
+                                <th class="px-6 py-2 text-gray-500">
+                                    Meter
+                                </th>
                             </thead>
                             <tbody>
                                 @foreach ($clientes as $cliente)
                                     <tr>
                                         <td class="px-6 py-2">{{ $cliente->dni }}</td>
                                         <td class="px-6 py-2">{{ $cliente->nombre }}</td>
-
+                                        <td class="px-6 py-4">
+                                            <form action="{{route('meter', $cliente)}}" method="post">
+                                                @csrf
+                                                @method('POST')
+                                                <button class="inline-flex text-black h-6 px-3 justify-center items-center" type="submit">meter</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-
-                    </x-cuentas>
+                    </x-clientes>
                 </div>
             </div>
         </div>
