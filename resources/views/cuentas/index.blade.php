@@ -24,6 +24,9 @@
                                 <th class="px-6 py-2 text-gray-500">
                                     Mostrar
                                 </th>
+                                <th class="px-6 py-2 text-gray-500">
+                                    Movimientos
+                                </th>
                             </thead>
                             <tbody>
                                 @foreach ($cuentas as $cuenta)
@@ -43,6 +46,9 @@
                                         </td>
                                         <td>
                                             <a href="{{ route('vertitulares', $cuenta) }}" class="mt-4 text-blue-900 hover:underline">Mostrar titulares</a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('movimientoscuenta', $cuenta) }}" class="mt-4 text-blue-900 hover:underline">Movimientos de la cuenta</a>
                                         </td>
                                     </tr>
                                 @endforeach

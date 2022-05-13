@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreMovimientoRequest;
 use App\Http\Requests\UpdateMovimientoRequest;
+use App\Models\Cuenta;
 use App\Models\Movimiento;
+use Carbon\Carbon;
 
 class MovimientoController extends Controller
 {
@@ -15,7 +17,11 @@ class MovimientoController extends Controller
      */
     public function index()
     {
-        //
+        $movimientos = Movimiento::all();
+
+        return view('movimientos.index', [
+            'movimientos' => $movimientos,
+        ]);
     }
 
     /**
@@ -25,8 +31,13 @@ class MovimientoController extends Controller
      */
     public function create()
     {
-        //
+        $movimiento = new Movimiento();
+
+        return view('movimientos.create', [
+            'movimiento' => $movimiento
+        ]);
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -36,7 +47,14 @@ class MovimientoController extends Controller
      */
     public function store(StoreMovimientoRequest $request)
     {
-        //
+        $validados = $request->validated();
+        $movimiento = new Movimiento($validados);
+        $movimiento->fecha = Carbon::now();
+        $movimiento->save();
+
+        $cuenta = $request->cuenta_id;
+
+        return redirect()->route('cuentas.movimiento', $cuenta);
     }
 
     /**

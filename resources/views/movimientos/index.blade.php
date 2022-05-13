@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Clientes') }}
+            {{ __('Movimientos') }}
         </h2>
     </x-slot>
 
@@ -13,31 +13,30 @@
                         <table class="table-auto">
                             <thead>
                                 <th class="px-6 py-2 text-gray-500">
-                                    Dni
+                                    Cuenta
                                 </th>
                                 <th class="px-6 py-2 text-gray-500">
-                                    Nombre
+                                    Fecha
                                 </th>
                                 <th class="px-6 py-2 text-gray-500">
-                                    Meter
+                                    Concepto
+                                </th>
+                                <th class="px-6 py-2 text-gray-500">
+                                    Importe
                                 </th>
                             </thead>
                             <tbody>
-                                @foreach ($clientes as $cliente)
+                                @foreach ($movimientos as $movimiento)
                                     <tr>
-                                        <td class="px-6 py-2">{{ $cliente->dni }}</td>
-                                        <td class="px-6 py-2">{{ $cliente->nombre }}</td>
-                                        <td class="px-6 py-4">
-                                            <form action="{{route('meter', ['cuenta' => $cuenta, 'cliente' => $cliente])}}" method="post">
-                                                @csrf
-                                                @method('POST')
-                                                <button class="inline-flex text-black h-6 px-3 justify-center items-center" type="submit">meter</button>
-                                            </form>
-                                        </td>
+                                        <td class="px-6 py-2">{{ $movimiento->cuenta->numero}}</td>
+                                        <td class="px-6 py-2">{{ $movimiento->fecha}}</td>
+                                        <td class="px-6 py-2">{{ $movimiento->concepto}}</td>
+                                        <td class="px-6 py-2">{{ $movimiento->importe}}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
+                        <a href="/movimientos/create" class="mt-4 text-blue-900 hover:underline">Insertar un nuevo movimiento</a>
                     </x-clientes>
                 </div>
             </div>

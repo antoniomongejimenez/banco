@@ -59,7 +59,7 @@ class CuentaController extends Controller
      */
     public function show(Cuenta $cuenta)
     {
-        //
+
     }
 
     /**
@@ -120,11 +120,25 @@ class CuentaController extends Controller
 
     public function meter(Cuenta $cuenta, Cliente $cliente)
     {
-        return view('cuentas.prueba', [
-            'cliente' => $cliente,
-            'cuenta' => $cuenta,
+        $cuenta->clientes()->attach($cliente);
+
+        return redirect()->route('vertitulares', $cuenta)->with('success', 'Titular añadido con exito.');
+
+    }
+
+
+    public function movimientoscuenta(Cuenta $cuenta)
+    {
+
+        $movimientos = $cuenta->movimientos()->get();
+
+
+        return view('cuentas.movimiento', [
+            'movimientos' => $movimientos,
         ]);
     }
+
+
 
 
 

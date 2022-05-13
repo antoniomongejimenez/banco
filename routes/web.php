@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\CuentaController;
+use App\Http\Controllers\MovimientoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,11 @@ Route::resource('clientes', ClienteController::class);
 
 Route::resource('cuentas', CuentaController::class);
 
+Route::resource('movimientos', MovimientoController::class);
+
+Route::get('/cuentas/{cuenta}/movimientos', [CuentaController::class, 'movimientoscuenta'])
+->name('movimientoscuenta');
+
 Route::get('/cuentas/{cuenta}/titulares', [CuentaController::class, 'titulares'])
 ->name('vertitulares');
 
@@ -34,7 +40,7 @@ Route::get('/cuentas/{cuenta}/titulares', [CuentaController::class, 'titulares']
 Route::get('/cuentas/{cuenta}/verlistadoclientes', [CuentaController::class, 'verlistadoclientes'])
 ->name('verlistadoclientes');
 
-Route::post('/cuentas/meter/{cliente}', [CuentaController::class, 'meter'])
+Route::post('/cuentas/{cuenta}/meter/{cliente}', [CuentaController::class, 'meter'])
 ->name('meter');
 
 require __DIR__.'/auth.php';

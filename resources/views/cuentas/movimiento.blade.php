@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Cuentas') }}
+            {{ __('Movimientos') }}
         </h2>
     </x-slot>
 
@@ -13,24 +13,30 @@
                         <table class="table-auto">
                             <thead>
                                 <th class="px-6 py-2 text-gray-500">
-                                    Número
+                                    Cuenta
                                 </th>
                                 <th class="px-6 py-2 text-gray-500">
-                                    Editar
+                                    Fecha
                                 </th>
                                 <th class="px-6 py-2 text-gray-500">
-                                    Borrar
+                                    Concepto
                                 </th>
                                 <th class="px-6 py-2 text-gray-500">
-                                    Mostrar
+                                    Importe
                                 </th>
                             </thead>
                             <tbody>
-                                {{dd($cliente)}}
+                                @foreach ($movimientos as $movimiento)
+                                    <tr>
+                                        <td class="px-6 py-2">{{ $movimiento->cuenta->numero}}</td>
+                                        <td class="px-6 py-2">{{ $movimiento->fecha}}</td>
+                                        <td class="px-6 py-2">{{ $movimiento->concepto}}</td>
+                                        <td class="px-6 py-2">{{ $movimiento->importe}}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
-                        <a href="/cuentas/create" class="mt-4 text-blue-900 hover:underline">Insertar una nueva cuenta</a>
-                    </x-cuentas>
+                    </x-clientes>
                 </div>
             </div>
         </div>

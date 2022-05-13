@@ -13,7 +13,7 @@ class StoreMovimientoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class StoreMovimientoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "cuenta_id"=>'required|integer',
+            "concepto"=>'required|string|min:3|max:255',
+            "importe"=>'required| numeric',
         ];
     }
 }
