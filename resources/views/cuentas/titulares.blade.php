@@ -24,7 +24,13 @@
                                     <tr>
                                         <td class="px-6 py-2">{{ $cliente->dni }}</td>
                                         <td class="px-6 py-2">{{ $cliente->nombre }}</td>
-
+                                        <td class="px-6 py-4">
+                                            <form action="{{route('eliminar', ['cuenta' => $cuenta, 'cliente' => $cliente])}}" method="post">
+                                                @csrf
+                                                @method('POST')
+                                                <button class="inline-flex bg-red-500 text-black h-6 px-3 justify-center items-center" type="submit">Eliminar</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

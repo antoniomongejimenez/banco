@@ -105,6 +105,7 @@ class CuentaController extends Controller
 
         return view('cuentas.titulares', [
             'clientes' => $clientes,
+            'cuenta' => $cuenta,
         ]);
     }
 
@@ -132,10 +133,23 @@ class CuentaController extends Controller
 
         $movimientos = $cuenta->movimientos()->get();
 
+        $saldo = $cuenta->with('movimientos')->withSum('movimientos', 'importe')->find($cuenta->id);
+
+
 
         return view('cuentas.movimiento', [
             'movimientos' => $movimientos,
+            'saldo' => $saldo,
         ]);
+    }
+
+
+    public function eliminar(Cuenta $cuenta, Cliente $cliente)
+    {
+        $cuenta->clientes()->where('id', $cliente->id)->detach();
+
+        return redirect()->route('vertitulares', $cuenta)->with('success', 'Titular eliminado.');
+
     }
 
 

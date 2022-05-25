@@ -31,7 +31,7 @@
                                             <form action="{{route('meter', ['cuenta' => $cuenta, 'cliente' => $cliente])}}" method="post">
                                                 @csrf
                                                 @method('POST')
-                                                <button class="inline-flex text-black h-6 px-3 justify-center items-center" type="submit">meter</button>
+                                                <button class="inline-flex bg-green-500 text-black h-6 px-3 justify-center items-center" type="submit">meter</button>
                                             </form>
                                         </td>
                                     </tr>

@@ -31,11 +31,20 @@
                                         <td class="px-6 py-2">{{ $movimiento->cuenta->numero}}</td>
                                         <td class="px-6 py-2">{{ $movimiento->fecha}}</td>
                                         <td class="px-6 py-2">{{ $movimiento->concepto}}</td>
-                                        <td class="px-6 py-2">{{ $movimiento->importe}}</td>
+                                        @if ($movimiento->importe >= 0)
+                                            <td class="px-6 py-2 text-green-500">{{ $movimiento->importe}}</td>
+                                        @else
+                                            <td class="px-6 py-2 text-red-500">{{ $movimiento->importe}}</td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
+                        @if ($saldo->movimientos_sum_importe >= 0)
+                            <a class="text-green-500">Saldo: {{$saldo->movimientos_sum_importe}}</a>
+                        @else
+                            <a class="text-red-500">Saldo: {{$saldo->movimientos_sum_importe}}</a>
+                        @endif
                     </x-clientes>
                 </div>
             </div>

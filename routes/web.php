@@ -43,4 +43,7 @@ Route::get('/cuentas/{cuenta}/verlistadoclientes', [CuentaController::class, 've
 Route::post('/cuentas/{cuenta}/meter/{cliente}', [CuentaController::class, 'meter'])
 ->name('meter');
 
+Route::post('/cuentas/{cuenta}/eliminar/{cliente}', [CuentaController::class, 'eliminar'])
+->name('eliminar');
+
 require __DIR__.'/auth.php';

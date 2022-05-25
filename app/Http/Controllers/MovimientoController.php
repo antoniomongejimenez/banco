@@ -54,7 +54,7 @@ class MovimientoController extends Controller
 
         $cuenta = $request->cuenta_id;
 
-        return redirect()->route('cuentas.movimiento', $cuenta);
+        return redirect()->route('movimientoscuenta', $cuenta);
     }
 
     /**
