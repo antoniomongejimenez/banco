@@ -14,9 +14,6 @@
                         <table class="table-auto">
                             <thead>
                                 <th class="px-6 py-2 text-gray-500">
-                                    Cuenta
-                                </th>
-                                <th class="px-6 py-2 text-gray-500">
                                     Fecha
                                 </th>
                                 <th class="px-6 py-2 text-gray-500">
@@ -29,7 +26,6 @@
                             <tbody>
                                 @foreach ($movimientos as $movimiento)
                                     <tr>
-                                        <td class="px-6 py-2">{{ $movimiento->cuenta->numero}}</td>
                                         <td class="px-6 py-2">{{ $movimiento->fecha}}</td>
                                         <td class="px-6 py-2">{{ $movimiento->concepto}}</td>
                                         @if ($movimiento->importe >= 0)
