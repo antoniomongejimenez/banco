@@ -148,6 +148,7 @@ class CuentaController extends Controller
 
         return view('cuentas.movimiento', [
             'movimientos' => $movimientos,
+            'cuenta' => $cuenta,
             'saldo' => $saldo,
         ]);
     }
