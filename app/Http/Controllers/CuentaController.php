@@ -146,7 +146,7 @@ class CuentaController extends Controller
 
     public function eliminar(Cuenta $cuenta, Cliente $cliente)
     {
-        $cuenta->clientes()->where('id', $cliente->id)->detach();
+        $cuenta->clientes()->detach($cliente->id);
 
         return redirect()->route('vertitulares', $cuenta)->with('success', 'Titular eliminado.');
 
