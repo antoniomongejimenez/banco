@@ -20,4 +20,9 @@ class Cuenta extends Model
     {
         return $this->hasMany(Movimiento::class);
     }
+
+    public function registros()
+    {
+        return $this->hasMany(Registro::class);
+    }
 }

@@ -5,16 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cliente extends Model
+class Operacion extends Model
 {
     use HasFactory;
 
-    public $fillable = ['dni', 'nombre'];
-
-    public function cuentas()
-    {
-        return $this->belongsToMany(Cuenta::class, 'titulares');
-    }
+    protected $table = 'operaciones';
 
     public function registros()
     {

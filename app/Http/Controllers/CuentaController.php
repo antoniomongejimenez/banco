@@ -6,6 +6,8 @@ use App\Http\Requests\StoreCuentaRequest;
 use App\Http\Requests\UpdateCuentaRequest;
 use App\Models\Cliente;
 use App\Models\Cuenta;
+use App\Models\Registro;
+use Carbon\Carbon;
 
 class CuentaController extends Controller
 {
@@ -123,6 +125,13 @@ class CuentaController extends Controller
     {
         $cuenta->clientes()->attach($cliente);
 
+        $registro = new Registro();
+        $registro->cuenta_id = $cuenta->id;
+        $registro->cliente_id = $cliente->id;
+        $registro->operacion_id = 1;
+        $registro->fecha_operacion = Carbon::now();
+        $registro->save();
+
         return redirect()->route('vertitulares', $cuenta)->with('success', 'Titular añadido con exito.');
 
     }
@@ -147,6 +156,14 @@ class CuentaController extends Controller
     public function eliminar(Cuenta $cuenta, Cliente $cliente)
     {
         $cuenta->clientes()->detach($cliente->id);
+
+        $registro = new Registro();
+        $registro->cuenta_id = $cuenta->id;
+        $registro->cliente_id = $cliente->id;
+        $registro->operacion_id = 2;
+        $registro->fecha_operacion = Carbon::now();
+        $registro->save();
+
 
         return redirect()->route('vertitulares', $cuenta)->with('success', 'Titular eliminado.');
 
