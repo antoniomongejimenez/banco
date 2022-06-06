@@ -27,7 +27,11 @@
                                     <tr>
                                         <td class="px-6 py-2">{{ $registro->cuenta->numero }}</td>
                                         <td class="px-6 py-2">{{ $registro->cliente->nombre }}</td>
-                                        <td class="px-6 py-2">{{ $registro->operacion->operacion }}</td>
+                                        @if ($registro->operacion_id == 1)
+                                            <td class="px-6 py-2 text-green-500">{{ $registro->operacion->operacion}}</td>
+                                        @else
+                                            <td class="px-6 py-2 text-red-500">{{ $registro->operacion->operacion}}</td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>
